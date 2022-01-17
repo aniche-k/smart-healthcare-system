@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Smart Healthcare System</title>
+    <style>
+      @keyframes slideInFromTop {
+  0% {
+    transform: translateY(100%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+    </style>
+
+</head>
+<body>
+    <header class="text-gray-600 body-font">
+        <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+          <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+            </svg>
+            <span class="ml-3 text-xl">Healthcare System</span>
+          </a>
+          <nav class="md:ml-auto flex flex-wrap items-center text-base justify-center">
+            <a class="mr-5 hover:text-gray-900" href="/heart">Heart Disease</a>
+            <a class="mr-5 hover:text-gray-900" href="/diabetes">Diabetes</a>
+            <a class="mr-5 hover:text-gray-900" href="/liver">Liver </a>
+            <a class="mr-5 hover:text-gray-900" href="/ct">CT Scan</a>
+            <a class="mr-5 hover:text-gray-900" href="/malaria">Malaria</a>
+            <a class="mr-5 hover:text-gray-900" href="/mri">MRI Scan</a>
+          </nav>
+          <button onclick="location.href = '/';" class="inline-flex items-center bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-4 md:mt-0">Home
+            <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+              <path d="M5 12h14M12 5l7 7-7 7"></path>
+            </svg>
+          </button>
+        </div>
+      </header>
+      <br><br><br>
+      <div class="flex flex-col text-center w-full mb-20">
+              <h1 class="lg:text-3xl text-2xl font-medium title-font mb-4 text-gray-900" style="animation:1s ease-out 0s 1 slideInFromTop; font-size: 50px; vertical-align: middle;">Smart Healthcare System</h1>
+              <br><br>
+              <p class="lg:w-2/3 mx-auto leading-relaxed text-base" style="font-size: 20px">The proposed AI- system shows that it can process the patient’s data, and offer early detection of serious diseases. It can recognize the complicated patterns which have been obtained from Lab test results, can analyze complete human molecular data and genetics in the clinic, and can support doctors by producing AI-generated radiologist results, clinical laboratory reports, and many other decision-support tools. 
+              </p>
+            </div>
+      <br>
+
+      
+
+            
+</body>
+</html>
