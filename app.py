@@ -1,4 +1,3 @@
-
 from flask import Flask,request,url_for,render_template
 #import pandas as pd
 import numpy as np
@@ -25,7 +24,10 @@ diabetes_model=pickle.load(open(diabetes_model_path,'rb'))
 
 #liver_model_path="models/liver.h5"
 #liver_model=load_model(liver_model_path)
-liver_model_path="models/RandomForest.pkl"
+#liver_model_path="models/RandomForest.pkl"
+#liver_model=pickle.load(open(liver_model_path,'rb'))
+
+liver_model_path="models/RandomForest1.pkl"
 liver_model=pickle.load(open(liver_model_path,'rb'))
 
 #malaria_model_path="models/mal2.h5"
@@ -66,7 +68,7 @@ def heart_predict():
     #features=np.array([[44,1,1,120,263,0,1,173,0,0,2,0,3]])
     #features=np.array([[60,0,0,150,258,0,0,157,0,2.6,1,2,3]])
     #features=np.array([[63,1,3,145,233,1,0,150,0,2.3,0,0,1]])
-    #features=np.array([[57,0,0,120,354,0,1,163,1,0.6,2,0,2]])
+    features=np.array([[57,0,0,120,354,0,1,163,1,0.6,2,0,2]])
     predict=heart_model.predict(features)
     if(predict>=1):
         return render_template("heart.html",pred="You may have Heart Disease")
@@ -93,7 +95,7 @@ def diabetes_predict():
     if(predict>=1):
          return render_template("diabetes.html",pred="The person is likely to have diabetes")
     else:
-         return render_template("diabetes.html",pred="The person is likely to not have diabetes")
+         return render_template("diabetes.html",pred="The person is not likely to have diabetes")
 
 @app.route("/liver")
 def liver():
@@ -110,15 +112,19 @@ def liver_predict():
     total_proteins=float(request.form["total_proteins"])
     albumin=float(request.form["albumin"])
     albumin_globulin_ratio=float(request.form["agr"])
-    #features=np.array([[age,gender,total_bilirubin,direct_bilirubin,alkaline_phosphotase,alamine_aminotransferase,aspartate_aminotransferase,total_proteins,albumin,albumin_globulin_ratio]])
+    features=np.array([[age,gender,direct_bilirubin,alkaline_phosphotase,alamine_aminotransferase,aspartate_aminotransferase,total_proteins,albumin,albumin_globulin_ratio]])
     #features=np.array([[65,1,0.7,0.1,187,16,18,6.8,3.3,0.90]])
     #features=np.array([[63,1,0.9,0.2,194,52,45,6,3.9,1.85]])
-    #features=np.array([[84,0,0.7,0.2,188,13,21,6,3.2,1.1]])
+    #features=np.array([[84,0,0.2,188,13,21,6,3.2,1.1]])
     #features=np.array([[47,1,2.7,1.3,275,123,73,6.2,3.3,1.1]])
-    #features=np.array([[50,1,2.6,1.2,415,407,576,6.4,3.2,1]]) #has disease
-    features=np.array([[0.651163,0.0,0.001340,0.000000,0.213483,0.005025,0.004879,0.463768,0.152174,0.028]])
+    #features=np.array([[50,1,1.2,415,407,576,6.4,3.2,1]]) #has disease
+    #features=np.array([[65,1,0.7,0.1,187,16,18,6.8,3.3,0.90]]) 
+    #features=np.array([[84,0,0.2,188,13,21,6,3.2,1.1]]) #No disease
     predict=liver_model.predict(features)
-    return render_template("liver.html",pred="The person may not have liver disease.")
+    if(predict==1):
+        return render_template("liver.html",pred="The person may have Liver Disease")
+    else:
+        return render_template("liver.html",pred="The person may not have Liver Disease")
 
 @app.route("/ct")
 def ct():
