@@ -35,8 +35,8 @@ liver_model=pickle.load(open(liver_model_path,'rb'))
 
 malaria_model=tf.keras.models.load_model('models/mal-036.model')
 
-mri_model_path="models/mri.h5"
-mri_model=load_model(mri_model_path)
+mri_model_path="models/RandomForest1.pkl"
+mri_model=pickle.load(open(mri_model_path,'rb'))
 
 ct_model=tf.keras.models.load_model('models/cov-003.model')
 
